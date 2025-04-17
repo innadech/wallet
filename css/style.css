@@ -53,7 +53,8 @@ body {
 
 .wrapper {
   min-width: 420px;
-  max-width: 840px;
+  max-width: 1280px;
+  width: 80%;
   border: 1px solid #ccc;
   box-shadow: 0 0 25px 0 #2345;
   margin: 0 auto;
@@ -108,14 +109,17 @@ input[type='number'] {
   box-shadow: 0 0 10px 0 #2345;
   cursor: default;
   margin: 5px;
+  font-size: 14px;
 }
 
 .badge > i {
   padding: 5px;
 }
 
-.badge > input[type='button'] {
+input[type='button'] {
   cursor: pointer;
+  font-size: 14px;
+  border: 0;
 }
 
 .container-income-list .badge {
