@@ -17,9 +17,9 @@ let expenses = [
   //   description: 'еда',
   // },
 ]
-function setBalance() {
-  balance = getTotalIncomes()
-}
+// function setBalance() {
+//   balance = getTotalIncomes()
+// }
 const income = {
   id: 0,
   amount: 0,
