@@ -1,132 +1,361 @@
+let transactionHistory = []
+let categories = []
+let nextId = 1
 let balance = 0
-let incomes = []
-let expenses = [
-  // {
-  //   id: 1,
-  //   amount: 120,
-  //   description: 'еда',
-  // },
-  // {
-  //   id: 2,
-  //   amount: 100,
-  //   description: 'мясо',
-  // },
-  // {
-  //   id: 3,
-  //   amount: 100,
-  //   description: 'еда',
-  // },
-]
-// function setBalance() {
-//   balance = getTotalIncomes()
-// }
+
 const income = {
-  id: 0,
   amount: 0,
-  description: '',
+  category: '',
+}
+const expense = {
+  amount: 0,
+  category: '',
+}
+const transaction = {
+  id: 42,
+  type: 'income',
+  amount: 0,
+  category: '',
+}
+const category = {
+  id: 33,
+  caption: 'зарплата',
+  type: 'income',
 }
 
-const expense = {
-  id: 0,
-  amount: 0,
-  description: '',
+function creteTransactionFromIncome(income) {
+  return {
+    id: nextId++,
+    type: 'income',
+    amount: income.amount,
+    category: income.category,
+  }
 }
-function getNextIdIncome() {
-  income.id += 1
-  return income.id
+
+function creteTransactionFromExpense(expense) {
+  return {
+    id: nextId++,
+    type: 'expense',
+    amount: expense.amount,
+    category: expense.category,
+  }
 }
+
 function setAmountIncome(amount) {
   income.amount = amount
 }
-function setDescriptionIncome(currentDescription) {
-  income.description = currentDescription
+function setCategoryIncome(category) {
+  income.category = category
 }
-
-function getNextIdExpense() {
-  expense.id += 1
-  return expense.id
-}
-
 function setAmountExpense(amount) {
   expense.amount = amount
 }
-function setDescriptionExpense(currentDescription) {
-  expense.description = currentDescription
+function setCategoryExpense(category) {
+  expense.category = category
+}
+function addTransactionnFromIncome(income) {
+  const transaction = creteTransactionFromIncome(income)
+  transactionHistory.push(transaction)
+}
+function addTransactionnFromExpense(expense) {
+  const transaction = creteTransactionFromExpense(expense)
+  transactionHistory.push(transaction)
 }
 
-function addExpense() {
-  const createdExpense = {
-    id: expense.id,
-    amount: expense.amount,
-    description: expense.description,
+function getSumAmountByType() {
+  let amountIncome = 0
+  let amountExpense = 0
+  transactionHistory.forEach(history => {
+    if (history.type === 'income') {
+      amountIncome += history.amount
+    } else {
+      amountExpense += history.amount
+    }
+  })
+  return [amountIncome, amountExpense]
+}
+
+function createCategory(caption, type) {
+  return {
+    id: nextId++,
+    caption: caption,
+    type: type,
   }
-
-  expenses.push(createdExpense)
 }
-function addIncome() {
-  const createdIncome = {
-    id: income.id,
-    amount: income.amount,
-    description: income.description,
-  }
-
-  incomes.push(createdIncome)
+function addCategory(caption, type) {
+  const category = createCategory(caption, type)
+  categories.push(category)
 }
 
-function getTotalExpenses() {
-  return expenses.reduce((total, expense) => total + expense.amount, 0)
+function getBalance() {
+  const [incomeSum, expenseSum] = getSumAmountByType()
+  balance = incomeSum - expenseSum
+  return balance
 }
-function getTotalIncomes() {
-  return incomes.reduce((total, income) => total + income.amount, 0)
-}
-// function getTotalExpenses(){
-//   let total = 0
-//   expenses.forEach((expense)=>total += expense.amount)
-//   return total
+
+// addTransactionnFromIncome({
+//   amount: 12000,
+//   category: 'зарплат',
+// })
+// addTransactionnFromExpense({
+//   amount: 300,
+//   category: 'продукты питания',
+// })
+// addTransactionnFromIncome({
+//   amount: 10000,
+//   category: 'зарплат',
+// })
+// addTransactionnFromExpense({
+//   amount: 700,
+//   category: 'продукты питания',
+// })
+// transactionHistory
+
+// addCategory('income', 'зарплата')
+// addCategory('expence', 'продукты')
+// categories
+// let sum = getSumAmountByType()
+// sum
+// getBalance()
+// balance
+
+// let balance = 0
+// let incomes = []
+
+// let expenses = [
+//   {
+//     id: 1,
+//     amount: 120,
+//     description: 'еда',
+//   },
+//   {
+//     id: 2,
+//     amount: 100,
+//     description: 'мясо',
+//   },
+//   {
+//     id: 3,
+//     amount: 100,
+//     description: 'еда',
+//   },
+// ]
+// let histories = [
+//   // {
+//   //   id: 1,
+//   //   amount: 120,
+//   //   category: 'подарок',
+//   //   active: true,
+//   //   // type: 'income',
+//   // },
+//   // {
+//   //   id: 4,
+//   //   amount: 100,
+//   //   category: 'еда',
+//   //   active: false,
+//   //   // type: 'expense',
+//   // },
+//   // {
+//   //   id: 4,
+//   //   amount: 300,
+//   //   category: 'еда',
+//   //   active: false,
+//   //   // type: 'expense',
+//   // },
+//   // {
+//   //   id: 1,
+//   //   amount: 100,
+//   //   category: 'подарок',
+//   //   active: true,
+//   //   // type: 'income',
+//   // },
+// ]
+
+// function markAsIsIncome() {
+//   return (income.active = true)
+// }
+// function markAsIsExpense() {
+//   return (expense.active = false)
+// }
+// function addIncomeToHistory() {
+//   const createdIncome = {
+//     id: income.id,
+//     amount: income.amount,
+//     category: income.category,
+//     active: income.active,
+//   }
+
+//   histories.push(createdIncome)
+// }
+// function addExpenseToHistory() {
+//   const createdExpense = {
+//     id: expense.id,
+//     amount: expense.amount,
+//     category: expense.category,
+//     active: expense.active,
+//   }
+
+//   histories.push(createdExpense)
 // }
 
-function removeCategoryExpense(categoryName) {
-  const removedSum = expenses
-    .filter(
-      expense =>
-        expense.description.toLowerCase() === categoryName.toLowerCase()
-    )
-    .reduce((total, expense) => total + expense.amount, 0)
-  removedSum
-
-  expenses = expenses.filter(
-    expense => expense.description.toLowerCase() !== categoryName.toLowerCase()
-  )
-  return removedSum
-}
-function removeCategoryIncome(categoryName) {
-  const removedSum = incomes
-    .filter(
-      income => income.description.toLowerCase() === categoryName.toLowerCase()
-    )
-    .reduce((total, income) => total + income.amount, 0)
-  removedSum
-
-  incomes = incomes.filter(
-    income => income.description.toLowerCase() !== categoryName.toLowerCase()
-  )
-  return removedSum
-}
-
-function calculateBalance(income, expense) {
-  return income - expense
-}
-// function returnExpenseSumToBalance(income, returnedSum) {
-//   return income + returnedSum
+// function getSumByActive() {
+//   let activeSum = 0
+//   let inactiveSum = 0
+//   histories.forEach(history => {
+//     if (history.active) {
+//       activeSum += history.amount
+//     } else {
+//       inactiveSum += history.amount
+//     }
+//   })
+//   return [activeSum, inactiveSum]
 // }
+
+// function setBalance() {
+//   balance = getTotalIncomes()
+// }
+
+// function calculateBalance(expense) {
+//   balance = balance - expense
+// }
+
+// const income = {
+//   amount: 0,
+//   category: '',
+// }
+
+// const expense = {
+//   amount: 0,
+//   category: '',
+// }
+// function getNextIdIncome() {
+//   income.id += 1
+//   return income.id
+// }
+// function setAmountIncome(amount) {
+//   income.amount = amount
+// }
+// function setCategoryIncome(category) {
+//   income.category = category
+// }
+
+// function getNextIdExpense() {
+//   expense.id += 1
+//   return expense.id
+// }
+
+// function setAmountExpense(amount) {
+//   expense.amount = amount
+// }
+// function setCategoryExpense(category) {
+//   expense.category = category
+// }
+
+// function addExpense() {
+//   const createdExpense = {
+//     id: expense.id,
+//     amount: expense.amount,
+//     category: expense.category,
+//   }
+
+//   expenses.push(createdExpense)
+// }
+// function addIncome() {
+//   const createdIncome = {
+//     id: income.id,
+//     amount: income.amount,
+//     category: income.category,
+//   }
+
+//   incomes.push(createdIncome)
+// }
+
+// function getTotalExpenses() {
+//   return expenses.reduce((acc, expense) => acc + expense.amount, 0)
+// }
+// function getTotalIncomes() {
+//   return incomes.reduce((acc, income) => acc + income.amount, 0)
+// }
+// // function getTotalExpenses(){
+// //   let total = 0
+// //   expenses.forEach((expense)=>total += expense.amount)
+// //   return total
+// // }
+
+// function removeCategoryExpense(categoryName) {
+//   const removedSum = expenses
+//     .filter(
+//       expense => expense.category.toLowerCase() === categoryName.toLowerCase()
+//     )
+//     .reduce((total, expense) => total + expense.amount, 0)
+//   removedSum
+
+//   expenses = expenses.filter(
+//     expense => expense.category.toLowerCase() !== categoryName.toLowerCase()
+//   )
+//   return removedSum
+// }
+// function removeCategoryIncome(categoryName) {
+//   const removedSum = incomes
+//     .filter(
+//       income => income.category.toLowerCase() === categoryName.toLowerCase()
+//     )
+//     .reduce((total, income) => total + income.amount, 0)
+//   removedSum
+
+//   incomes = incomes.filter(
+//     income => income.category.toLowerCase() !== categoryName.toLowerCase()
+//   )
+//   return removedSum
+// }
+
+// function returnExpenseSumToBalance(returnedSum) {
+//   return balance + returnedSum
+// }
+
+// income
+// incomes
+// histories
+
+// expense
+// expenses
+// balance
+
+// setDescriptionIncome('Зарплата')
+// setAmountIncome(10000)
+// income
+// getNextIdIncome()
+// income
+// addIncome()
+// setBalance()
+// balance
+// markAsIsIncome()
+// addIncomeToHistory()
+// histories
 
 // setDescriptionExpense('Продукты питания')
 // setAmountExpense(400)
+// expense
 // addExpense()
+// expenses
+// markAsIsExpense()
+// addExpenseToHistory()
+// histories
+
+// let answer = getSumByActive()
+// answer
+
+// calculateBalance(getTotalExpenses())
+// balance
+
+// let removedSum = removeCategoryExpense('Продукты питания')
+// removedSum
 
 // setDescriptionExpense('Еда')
 // setAmountExpense(200)
 // addExpense()
+// expense
+// expenses
+// balance
 
 // setDescriptionExpense('Продукты питания')
 // setAmountExpense(300)
