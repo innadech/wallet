@@ -21,6 +21,45 @@ function onClickButtonAddExpense() {
   handleRenderSpanIncome()
 }
 
+function onClickRemove(e) {
+  const elId = e.target.parentElement.parentElement.getAttribute('data-id')
+  console.log(elId)
+  handleRemove(elId)
+  handleRenderSpanIncome()
+}
+
+function onclickRemoveCategory(e) {
+  const elId = e.target.parentElement.getAttribute('data-id')
+  console.log(elId)
+  handleRemoveCategory(elId)
+}
+
+function onClickButtonAddOptionIncome() {
+  const elInput = document.querySelector('#addOptionIncome')
+  const elCaption = elInput.value
+  const elType = 'income'
+  if (elInput.value === '') {
+    return
+  } else {
+    handleAddOptionToSelectIncome(elCaption, elType)
+  }
+}
+function onClickButtonAddOptionExpense() {
+  const elInput = document.querySelector('#addOptionExpense')
+  const elCaption = elInput.value
+  const elType = 'expense'
+  if (elInput.value === '') {
+    return
+  } else {
+    handleAddOptionToSelectExpense(elCaption, elType)
+  }
+}
+
+// const id =
+//     e.target.parentElement.parentElement.parentElement.getAttribute(
+//       'data-product-id'
+//     )
+
 // function onChangeSelectExpenseDescri(e) {
 //   const selectedOption = e.target.options[e.target.selectedIndex].text
 //   // console.log(selectedOption)

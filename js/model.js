@@ -1,7 +1,6 @@
 let transactionHistory = []
 let categories = []
 let nextId = 1
-let balance = 0
 
 const income = {
   amount: 0,
@@ -11,17 +10,17 @@ const expense = {
   amount: 0,
   category: '',
 }
-const transaction = {
-  id: 42,
-  type: 'income',
-  amount: 0,
-  category: '',
-}
-const category = {
-  id: 33,
-  caption: 'зарплата',
-  type: 'income',
-}
+// const transaction = {
+//   id: 42,
+//   type: 'income',
+//   amount: 0,
+//   category: '',
+// }
+// const category = {
+//   id: 33,
+//   caption: 'зарплата',
+//   type: 'income',
+// }
 
 function creteTransactionFromIncome(income) {
   return {
@@ -89,35 +88,54 @@ function addCategory(caption, type) {
 
 function getBalance() {
   const [incomeSum, expenseSum] = getSumAmountByType()
-  balance = incomeSum - expenseSum
-  return balance
+  return incomeSum - expenseSum
 }
 
-// addTransactionnFromIncome({
-//   amount: 12000,
-//   category: 'зарплат',
-// })
-// addTransactionnFromExpense({
-//   amount: 300,
-//   category: 'продукты питания',
-// })
-// addTransactionnFromIncome({
-//   amount: 10000,
-//   category: 'зарплат',
-// })
-// addTransactionnFromExpense({
-//   amount: 700,
-//   category: 'продукты питания',
-// })
-// transactionHistory
+function removeTransactionById(id) {
+  transactionHistory = transactionHistory.filter(
+    transaction => transaction.id !== id
+  )
+}
+function removeCategoryById(id) {
+  categories = categories.filter(category => category.id !== id)
+}
 
-// addCategory('income', 'зарплата')
-// addCategory('expence', 'продукты')
+// let result = getBalance()
+// result
+// transactionHistory
+// addTransactionnFromIncome({ amount: 12000, category: 'зарплата' })
+// transactionHistory
+// result = getBalance()
+// result
+
+// addTransactionnFromExpense({amount: 300,category: 'продукты питания'})
+// transactionHistory
+// result = getBalance()
+// result
+
+// addTransactionnFromIncome({amount: 10000,category: 'зарплата'})
+// transactionHistory
+// result = getBalance()
+// result
+
+// addTransactionnFromExpense({amount: 700,category: 'продукты питания'})
+// transactionHistory
+// result = getBalance()
+// result
+// // transactionHistory
+
+// categories
+// addCategory('зарплата','income')
+// categories
+// addCategory('продукты','expence')
 // categories
 // let sum = getSumAmountByType()
 // sum
 // getBalance()
-// balance
+// removeCategoryById(5)
+// categories
+// removeTransactionById(4)
+// transactionHistory
 
 // let balance = 0
 // let incomes = []

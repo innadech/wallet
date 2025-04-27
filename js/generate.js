@@ -3,10 +3,12 @@ function generateLiTransactionHistoryExpense(expense) {
   const elInput = document.createElement('input')
   const elSpan = document.createElement('span')
 
+  elLi.setAttribute('data-id', expense.id)
+
   elLi.classList.add('outcome')
   elSpan.classList.add('badge')
-  // elInput.onclick = onClickRemoveExpense
-  elSpan.textContent = 'Затраты' + ' ' + '-' + expense
+  elInput.onclick = onClickRemove
+  elSpan.textContent = 'Затраты' + ' ' + '$' + expense.amount
 
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '❌')
@@ -21,10 +23,12 @@ function generateLiTransactionHistoryIncome(income) {
   const elSpan = document.createElement('span')
   const elInput = document.createElement('input')
 
+  elLi.setAttribute('data-id', income.id)
+
   elLi.classList.add('income')
   elSpan.classList.add('badge')
-  // elInput.onclick = onClickRemoveIncome
-  elSpan.textContent = 'Доходы' + ' ' + '+' + income
+  elInput.onclick = onClickRemove
+  elSpan.textContent = 'Доходы' + ' ' + '$' + income.amount
 
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '🗙')
@@ -39,9 +43,11 @@ function generateLiExpense(expense) {
   const elI = document.createElement('i')
   const elInput = document.createElement('input')
 
+  elSpan.setAttribute('data-id', expense.id)
+
   elSpan.classList.add('badge')
-  // elInput.onclick = onClickRemoveExpense
-  elI.textContent = expense.category
+  elInput.onclick = onclickRemoveCategory
+  elI.textContent = expense.caption
 
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '🗙')
@@ -55,9 +61,12 @@ function generateLiIncome(income) {
   const elI = document.createElement('i')
   const elInput = document.createElement('input')
 
+  elSpan.setAttribute('data-id', income.id)
+
   elSpan.classList.add('badge')
-  // elInput.onclick = onClickRemoveIncome
-  elI.textContent = income.category
+  elInput.onclick = onclickRemoveCategory
+  elI.textContent = income.caption
+  console.log(income.caption)
 
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '🗙')
@@ -65,4 +74,15 @@ function generateLiIncome(income) {
   elSpan.appendChild(elI)
   elSpan.appendChild(elInput)
   return elSpan
+}
+
+function generateOption(category) {
+  const elOptionSelected = document.createElement('option')
+  const elOption = document.createElement('option')
+  elOption.textContent = category.caption
+  elOptionSelected.textContent = 'Выберите категорию'
+  elOptionSelected.hidden = true
+  elOptionSelected.disabled = true
+  elOptionSelected.selected = true
+  return elOption
 }

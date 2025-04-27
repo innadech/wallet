@@ -20,8 +20,8 @@
             <div class="wrap-input-select">
               <select name="income" id="income">
                 <option hidden selected disabled>Выберите категорию</option>
-                <option>Зарплата</option>
-                <option>Подарок</option>
+                <!-- <option>Зарплата</option>
+                <option>Подарок</option> -->
               </select>
             </div>
             <div class="wrap-input-text">
@@ -29,7 +29,7 @@
               <input id="incomeamount" type="number" />
             </div>
             <div class="wrap-button">
-              <button id="incomeadd">Добавить</button>
+              <button id="incomeadd">Добавить доход</button>
             </div>
           </div>
           <div class="container-outcome-append">
@@ -37,8 +37,8 @@
             <div class="wrap-input-select">
               <select name="expense" id="expense">
                 <option hidden selected disabled>Выберите категорию</option>
-                <option>Продукты питания</option>
-                <option>Бытовая техника</option>
+                <!-- <option>Продукты питания</option>
+                <option>Бытовая техника</option> -->
               </select>
             </div>
             <div class="wrap-input-text">
@@ -46,7 +46,7 @@
               <input id="expenseamount" type="number" />
             </div>
             <div class="wrap-button">
-              <button id="expenseadd">Добавить</button>
+              <button id="expenseadd">Добавить расход</button>
             </div>
           </div>
         </div>
@@ -56,21 +56,26 @@
             <div>
               <h4>Доходов</h4>
               <div class="container-income-list">
-                <span class="badge">
+                <!-- <span class="badge">
                   <i>Зарплата</i>
                   <input type="button" value="🗙" />
                 </span>
                 <span class="badge">
                   <i>Подарок</i>
                   <input type="button" value="🗙" />
-                </span>
+                </span> -->
               </div>
-              <div><button>Добавить</button></div>
+              <div>
+                <button id="addOptionIncomeButton">
+                  Добавить категорию доходов
+                </button>
+              </div>
+              <input id="addOptionIncome" type="text" />
             </div>
             <div>
               <h4>Расходов</h4>
               <div class="container-outcome-list">
-                <span class="badge">
+                <!-- <span class="badge">
                   <i>Продукты питания</i>
                   <input id="outcomelist" type="button" value="🗙" />
                 </span>
@@ -78,18 +83,24 @@
                   <i>Бытовая техника</i>
                   <span></span>
                   <input type="button" value="🗙" />
-                </span>
+                </span> -->
               </div>
+              <div>
+                <button id="addOptionExpenseButton">
+                  Добавить категорию расходов
+                </button>
+              </div>
+              <input id="addOptionExpense" type="text" />
             </div>
           </div>
         </div>
         <div class="bottom">
           <h3>История</h3>
           <div class="transaction-history">
-            <!-- <ul>
-              <li class="outcome">$100 <input type="button" value="🗙" /></li>
-              <li class="income">$200 <input type="button" value="🗙" /></li>
-            </ul> -->
+            <ul>
+              <!-- <li class="outcome">$100 <input type="button" value="🗙" /></li>
+              <li class="income">$200 <input type="button" value="🗙" /></li> -->
+            </ul>
           </div>
         </div>
       </div>
@@ -98,6 +109,7 @@
     <script src="./js/model.js"></script>
     <script src="./js/generate.js"></script>
     <script src="./js/render.js"></script>
+    <!-- <script src="./js/storage.js"></script> -->
     <script src="./js/listeners.js"></script>
     <script src="./js/view.js"></script>
     <script src="./js/controller.js"></script>

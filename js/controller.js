@@ -6,20 +6,55 @@ function handleSetExpense(category, amount) {
   setCategoryExpense(category)
   setAmountExpense(+amount)
 }
-function handleAddIncome(caption, type) {
+function handleAddIncome() {
   addTransactionnFromIncome(income)
-  renderTransactionHistory(getSumAmountByType())
-  addCategory(caption, type)
+  renderTransactionHistory(transactionHistory)
 }
-function handleAddExpense(caption, type) {
+function handleAddExpense() {
   addTransactionnFromExpense(expense)
-  renderTransactionHistory(getSumAmountByType())
-  addCategory(caption, type)
+  renderTransactionHistory(transactionHistory)
 }
 function handleRenderSpanIncome() {
   const elBalance = getBalance()
   renderSpanIncome(elBalance)
 }
+function handleRemove(id) {
+  removeTransactionById(+id)
+  renderTransactionHistory(transactionHistory)
+}
+
+function handleAddOptionToSelectIncome(caption, type) {
+  addCategory(caption, type)
+  renderSelect(categories)
+  renderInputAddOptionCategoryIncome()
+  renderCategory(categories)
+  // saveCategory(category)
+  // saveCategories()
+}
+function handleAddOptionToSelectExpense(caption, type) {
+  addCategory(caption, type)
+  renderSelect(categories)
+  renderInputAddOptionCategoryExpense()
+  renderCategory(categories)
+  // saveCategory(category)
+  // saveCategories()
+}
+
+function handleRemoveCategory(id) {
+  removeCategoryById(+id)
+  renderCategory(categories)
+  renderSelect(categories)
+}
+
+// function handleLoadPage() {
+//   const category = restoreCategory()
+//   const categories = restoreCategories()
+//   const elCaption = category.caption
+//   const elType = category.type
+//   renderSelect(categories)
+//   addCategory(elCaption, elType)
+//   renderCategory(categories)
+// }
 
 // function handleSetAmountExpense(amount) {
 //   setAmountExpense(+amount)

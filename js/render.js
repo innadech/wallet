@@ -1,48 +1,89 @@
-function renderCategoryExpense(expenses) {
-  const elOutcomeList = document.querySelector('.container-outcome-list')
-  elOutcomeList.innerHTML = ''
-  for (const expense of expenses) {
-    const elExpense = generateLiExpense(expense)
-    elOutcomeList.appendChild(elExpense)
-  }
-}
-function renderCategoryIncome(incomes) {
-  const elIncomeList = document.querySelector('.container-income-list')
-  elIncomeList.innerHTML = ''
-  for (const income of incomes) {
-    const elIncome = generateLiIncome(income)
-    elIncomeList.appendChild(elIncome)
-  }
-}
-function renderSpanIncome(number) {
-  const elSpan = document.querySelector('.balance')
-  elSpan.innerHTML = number
-}
-
-function renderTransactionHistory() {
-  const elHistory = document.querySelector('.transaction-history')
-  elHistory.innerHTML = ''
-  const [activeSum, inactiveSum] = getSumAmountByType()
-  const elIncome = generateLiTransactionHistoryIncome(activeSum)
-  const elExpense = generateLiTransactionHistoryExpense(inactiveSum)
-  elHistory.appendChild(elIncome)
-  elHistory.appendChild(elExpense)
-}
-// const [active, inactive] = getSumByActive()-деструктиризация массива
-// то есть : const [activeSum, inactiveSum] - это способ сразу сохранить элементы массива в отдельные переменные
-// const result = getSumByActive()
-// const active = result[0]
-// const inactive = result[1]
-
-// function renderSpanExpense(number) {
-//   const elSpan = document.querySelector('.expense-money')
-//   elSpan.innerHTML = number
+// function renderCategoryExpense(expenses) {
+//   const elOutcomeList = document.querySelector('.container-outcome-list')
+//   elOutcomeList.innerHTML = ''
+//   for (const expense of expenses) {
+//     const elExpense = generateLiExpense(expense)
+//     elOutcomeList.appendChild(elExpense)
+//   }
 // }
-// function renderContainerIncome(incomes) {
-//   const elDivContainer = document.querySelector('.transaction-history')
-//   // elDivContainer.innerHTML = ''
+// function renderCategoryIncome(incomes) {
+//   const elIncomeList = document.querySelector('.container-income-list')
+//   elIncomeList.innerHTML = ''
 //   for (const income of incomes) {
 //     const elIncome = generateLiIncome(income)
-//     elDivContainer.appendChild(elIncome)
+//     elIncomeList.appendChild(elIncome)
+//   }
+// }
+function renderCategory(categories) {
+  const elIncomeList = document.querySelector('.container-income-list')
+  const elOutcomeList = document.querySelector('.container-outcome-list')
+  elIncomeList.innerHTML = ''
+  elOutcomeList.innerHTML = ''
+  for (const category of categories) {
+    if (category.type === 'income') {
+      const elIncome = generateLiIncome(category)
+      elIncomeList.appendChild(elIncome)
+    } else {
+      const elExpense = generateLiExpense(category)
+      elOutcomeList.appendChild(elExpense)
+    }
+  }
+}
+
+function renderSpanIncome(number) {
+  const elSpan = document.querySelector('.balance')
+  elSpan.innerHTML = 'Balance' + ':' + '$' + number
+}
+function renderTransactionHistory(transactions) {
+  const elTransactionHistory = document.querySelector('.transaction-history')
+  elTransactionHistory.innerHTML = ''
+  for (const transaction of transactions) {
+    if (transaction.type === 'income') {
+      const elGenerateIncome = generateLiTransactionHistoryIncome(transaction)
+      elTransactionHistory.appendChild(elGenerateIncome)
+    } else {
+      const elGenerateExpense = generateLiTransactionHistoryExpense(transaction)
+      elTransactionHistory.appendChild(elGenerateExpense)
+    }
+  }
+}
+
+function renderInputAddOptionCategoryIncome() {
+  const elInput = document.querySelector('#addOptionIncome')
+  elInput.value = ''
+}
+function renderInputAddOptionCategoryExpense() {
+  const elInput = document.querySelector('#addOptionExpense')
+  elInput.value = ''
+}
+
+function renderSelect(categories) {
+  const elSelectIncome = document.querySelector('#income')
+  const elSelectExpense = document.querySelector('#expense')
+  elSelectIncome.innerHTML = ''
+  elSelectExpense.innerHTML = ''
+  for (const category of categories) {
+    if (category.type === 'income') {
+      const elIncomeOption = generateOption(category)
+      elSelectIncome.appendChild(elIncomeOption)
+    } else {
+      const elExpenseOption = generateOption(category)
+      elSelectExpense.appendChild(elExpenseOption)
+    }
+  }
+}
+
+// function renderSelectIncome(categories) {
+//   const elSelectIncome = document.querySelector('#income')
+//   for (const category of categories){
+//     const elOption = generateOption(category)
+//   elSelectIncome.appendChild(elOption)
+//   }
+// }
+// function renderSelectExpense(categories) {
+//   const elSelectIncome = document.querySelector('#expense')
+//   for (const category of categories){
+//     const elOption = generateOption(category)
+//     elSelectIncome.appendChild(elOption)
 //   }
 // }
