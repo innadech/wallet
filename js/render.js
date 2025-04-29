@@ -15,18 +15,15 @@
 //   }
 // }
 function renderCategory(categories) {
-  const elIncomeList = document.querySelector('.container-income-list')
-  const elOutcomeList = document.querySelector('.container-outcome-list')
-  elIncomeList.innerHTML = ''
-  elOutcomeList.innerHTML = ''
+  const elems = {
+    income: document.querySelector('.container-income-list'),
+    expense: document.querySelector('.container-outcome-list'),
+  }
+  elems.income.innerHTML = ''
+  elems.expense.innerHTML = ''
   for (const category of categories) {
-    if (category.type === 'income') {
-      const elIncome = generateLiIncome(category)
-      elIncomeList.appendChild(elIncome)
-    } else {
-      const elExpense = generateLiExpense(category)
-      elOutcomeList.appendChild(elExpense)
-    }
+    const elLi = generateLiCategory(category)
+    elems[category.type].appendChild(elLi)
   }
 }
 
@@ -39,10 +36,10 @@ function renderTransactionHistory(transactions) {
   elTransactionHistory.innerHTML = ''
   for (const transaction of transactions) {
     if (transaction.type === 'income') {
-      const elGenerateIncome = generateLiTransactionHistoryIncome(transaction)
+      const elGenerateIncome = generateLiTransaction(transaction)
       elTransactionHistory.appendChild(elGenerateIncome)
     } else {
-      const elGenerateExpense = generateLiTransactionHistoryExpense(transaction)
+      const elGenerateExpense = generateLiTransaction(transaction)
       elTransactionHistory.appendChild(elGenerateExpense)
     }
   }
