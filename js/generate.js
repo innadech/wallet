@@ -76,13 +76,19 @@ function generateLiIncome(income) {
   return elSpan
 }
 
+function generateOptionSelected() {
+  const elOption = document.createElement('option')
+  elOption.textContent = 'Выберите категорию'
+
+  elOption.setAttribute('hidden', '')
+  elOption.setAttribute('disabled', '')
+  elOption.setAttribute('selected', '')
+
+  return elOption
+}
+
 function generateOption(category) {
-  const elOptionSelected = document.createElement('option')
   const elOption = document.createElement('option')
   elOption.textContent = category.caption
-  elOptionSelected.textContent = 'Выберите категорию'
-  elOptionSelected.hidden = true
-  elOptionSelected.disabled = true
-  elOptionSelected.selected = true
   return elOption
 }

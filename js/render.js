@@ -62,6 +62,10 @@ function renderSelect(categories) {
   const elSelectExpense = document.querySelector('#expense')
   elSelectIncome.innerHTML = ''
   elSelectExpense.innerHTML = ''
+  const elIncomeOptionSelected = generateOptionSelected()
+  const elExpenseOptionSelected = generateOptionSelected()
+  elSelectIncome.appendChild(elIncomeOptionSelected)
+  elSelectExpense.appendChild(elExpenseOptionSelected)
   for (const category of categories) {
     if (category.type === 'income') {
       const elIncomeOption = generateOption(category)
