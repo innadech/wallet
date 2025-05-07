@@ -5,7 +5,7 @@ function generateLiTransaction(transaction) {
   elLi.setAttribute('data-id', transaction.id)
   elLi.classList.add(transaction.type)
   elSpan.classList.add('badge')
-  elInput.onclick = onClickRemove
+  elInput.onclick = onClickInputBadgeRemoveTransaction
   elSpan.textContent = transaction.type + ' ' + '$' + transaction.amount
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '🗙')
@@ -20,7 +20,7 @@ function generateLiCategory(category) {
   const elInput = document.createElement('input')
   elSpan.setAttribute('data-id', category.id)
   elSpan.classList.add('badge')
-  elInput.onclick = onclickRemoveCategory
+  elInput.onclick = onclickInputBadgeRemoveCategory
   elI.textContent = category.caption
   elInput.setAttribute('type', 'button')
   elInput.setAttribute('value', '🗙')
@@ -34,6 +34,8 @@ function generateOptionSelected() {
   elOption.setAttribute('hidden', '')
   elOption.setAttribute('disabled', '')
   elOption.setAttribute('selected', '')
+  elOption.setAttribute('value', '')
+
   return elOption
 }
 

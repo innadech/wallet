@@ -9,10 +9,12 @@ function handleSetExpense(category, amount) {
 function handleAddIncome() {
   addTransactionnFromIncome(income)
   renderTransactionHistory(transactionHistory)
+  renderInputAddSumIncome()
 }
 function handleAddExpense() {
   addTransactionnFromExpense(expense)
   renderTransactionHistory(transactionHistory)
+  renderInputAddSumExpense()
 }
 function handleRenderSpanIncome() {
   const elBalance = getBalance()

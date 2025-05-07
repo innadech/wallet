@@ -11,9 +11,11 @@ const elButtonAddOptionExpense = document.querySelector(
   '#addOptionExpenseButton'
 )
 
-elExpenseButtonAdd.onclick = onClickButtonAddExpense
+elExpenseButtonAdd.onclick = onClickButtonAddIncomeExpense
+// elExpenseButtonAdd.onclick = onClickButtonAddExpense
 // elExpenseButtonRemove.onclick = onClickRemoveIncome
 
-elIncomeButtonAdd.onclick = onClickButtonAddIncome
+elIncomeButtonAdd.onclick = onClickButtonAddIncomeExpense
+// elIncomeButtonAdd.onclick = onClickButtonAddIncome
 elButtonAddOptionIncome.onclick = onClickButtonAddOptionIncome
 elButtonAddOptionExpense.onclick = onClickButtonAddOptionExpense
