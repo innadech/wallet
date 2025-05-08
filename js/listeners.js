@@ -1,30 +1,30 @@
-function onClickButtonAddIncomeExpense(e) {
-  const elInputIncome = document.querySelector('#incomeamount')
-  const elInputExpense = document.querySelector('#expenseamount')
-  const elButtonEvent = e.target
-  const parent = elButtonEvent.parentNode
-  // console.log(parent)
-  const container = parent.parentNode
-  const select = container.querySelector('select')
-  // console.log(select)
-  const selected = select.options[select.selectedIndex]
-  // console.log(selected)
-  const selectName = select.name
-  // console.log(selectName)
-  if (selected.disabled || elInputIncome.value === '') {
-    return
-  } else {
-    if (selectName === 'income') {
-      handleSetIncome(selected.value, elInputIncome.value)
-      handleAddIncome(selected.value, selectName)
-      handleRenderSpanIncome()
-    } else {
-      handleSetExpense(selected.value, elInputExpense.value)
-      handleAddExpense(selected.value, selectName)
-      handleRenderSpanIncome()
-    }
-  }
-}
+// function onClickButtonAddIncomeExpense(e) {
+//   const elInputIncome = document.querySelector('#incomeamount')
+//   const elInputExpense = document.querySelector('#expenseamount')
+//   const elButtonEvent = e.target
+//   const parent = elButtonEvent.parentNode
+//   // console.log(parent)
+//   const container = parent.parentNode
+//   const select = container.querySelector('select')
+//   // console.log(select)
+//   const selected = select.options[select.selectedIndex]
+//   // console.log(selected)
+//   const selectName = select.name
+//   // console.log(selectName)
+//   if (selected.disabled || elInputIncome.value === '') {
+//     return
+//   } else {
+//     if (selectName === 'income') {
+//       handleSetIncome(selected.value, elInputIncome.value)
+//       handleAddIncome(selected.value, selectName)
+//       handleRenderSpanIncome()
+//     } else {
+//       handleSetExpense(selected.value, elInputExpense.value)
+//       handleAddExpense(selected.value, selectName)
+//       handleRenderSpanIncome()
+//     }
+//   }
+// }
 
 function onClickInputBadgeRemoveTransaction(e) {
   const elId = e.target.parentElement.parentElement.getAttribute('data-id')
@@ -109,43 +109,37 @@ function onClickButtonAddOptionExpense() {
 //   handleRenderSpanIncome()
 // }
 
-// function onClickButtonAddExpense() {
-//   const elSelect = document.querySelector('#expense')
-//   const selectedOption = elSelect.options[elSelect.selectedIndex]
-//   console.log(selectedOption.value)
-//   const selectName = elSelect.name
-//   console.log(selectName)
-//   const elInput = document.querySelector('#expenseamount')
-//   if (elInput.value === '' || selectedOption.disabled) {
-//     return
-//   } else {
-//     handleSetExpense(selectedOption.value, elInput.value)
-//     handleAddExpense(selectedOption.value, selectName)
-//     handleRenderSpanIncome()
-//   }
-// }
+function onClickButtonAddExpense() {
+  const elSelect = document.querySelector('#expense')
+  const selectedOption = elSelect.options[elSelect.selectedIndex]
+  console.log(selectedOption.value)
+  const selectName = elSelect.name
+  console.log(selectName)
+  const elInput = document.querySelector('#expenseamount')
+  if (elInput.value === '' || selectedOption.disabled) {
+    return
+  } else {
+    handleSetExpense(selectedOption.value, elInput.value)
+    handleAddExpense(selectedOption.value, selectName)
+    handleRenderSpanIncome()
+  }
+}
 
-// function onClickButtonAddIncome() {
-//   // const elInputEvent = e.target
-//   // const parent = elInputEvent.parentNode
-//   // const select = parent.querySelector('select')
-//   // const selected = select.options[select.selectedIndex]
-//   // console.log(selected)
-
-//   const elSelect = document.querySelector('#income')
-//   const selectedOption = elSelect.options[elSelect.selectedIndex]
-//   console.log(selectedOption.value)
-//   const selectName = elSelect.name
-//   console.log(selectName)
-//   const elInput = document.querySelector('#incomeamount')
-//   if (elInput.value === '' || selectedOption.disabled) {
-//     return
-//   } else {
-//     handleSetIncome(selectedOption.value, elInput.value)
-//     handleAddIncome(selectedOption.value, selectName)
-//     handleRenderSpanIncome()
-//   }
-// }
+function onClickButtonAddIncome() {
+  const elSelect = document.querySelector('#income')
+  const selectedOption = elSelect.options[elSelect.selectedIndex]
+  console.log(selectedOption.value)
+  const selectName = elSelect.name
+  console.log(selectName)
+  const elInput = document.querySelector('#incomeamount')
+  if (elInput.value === '' || selectedOption.disabled) {
+    return
+  } else {
+    handleSetIncome(selectedOption.value, elInput.value)
+    handleAddIncome(selectedOption.value, selectName)
+    handleRenderSpanIncome()
+  }
+}
 
 //
 //      ||     elInputExpense.value === ''
