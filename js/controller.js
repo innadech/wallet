@@ -2,10 +2,16 @@ function handleSetIncome(category, amount) {
   setCategoryIncome(category)
   setAmountIncome(+amount)
 }
-function handleSetExpense(category, amount) {
+function handleSetCategoryExpense(category, amount) {
   setCategoryExpense(category)
+}
+function handleSetAmountExpense(category, amount) {
   setAmountExpense(+amount)
 }
+// function handleSetExpense(category, amount) {
+//   setCategoryExpense(category)
+//   setAmountExpense(+amount)
+// }
 function handleAddIncome() {
   addTransactionnFromIncome(income)
   renderTransactionHistory(transactionHistory)
@@ -27,7 +33,7 @@ function handleRemove(id) {
 
 function handleAddOptionToSelectIncome(caption, type) {
   addCategory(caption, type)
-  renderSelectIncome(categories)
+  renderSelect(categories, type)
   renderInputAddOptionCategoryIncome()
   renderCategory(categories)
   // saveCategory(category)
@@ -35,18 +41,17 @@ function handleAddOptionToSelectIncome(caption, type) {
 }
 function handleAddOptionToSelectExpense(caption, type) {
   addCategory(caption, type)
-  renderSelectExpense(categories)
+  renderSelect(categories)
   renderInputAddOptionCategoryExpense()
   renderCategory(categories)
   // saveCategory(category)
   // saveCategories()
 }
 
-function handleRemoveCategory(id) {
+function handleRemoveCategory(id, type) {
   removeCategoryById(+id)
   renderCategory(categories)
-  if (removed.type === 'income') renderSelectIncome(categories)
-  // if (category.type === 'expense') renderSelectExpense(categories)
+  renderSelect(categories, type)
 }
 
 // function handleLoadPage() {

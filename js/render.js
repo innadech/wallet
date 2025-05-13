@@ -1,3 +1,22 @@
+function renderSelectRedExpense() {
+  const elSelect = document.querySelector('#expense')
+  const elSelectedOption = elSelect.options[elSelect.selectedIndex]
+  if (elSelectedOption.disabled) {
+    elSelect.style.border = '2px solid red'
+    return
+  }
+  elSelect.style.border = ''
+}
+
+function renderInputRedExpense() {
+  const elInput = document.querySelector('#expenseamount')
+  if (+elInput.value) {
+    elInput.style.border = '2px solid red'
+    return
+  }
+  elInput.style.border = ''
+}
+
 function renderCategory(categories) {
   const elems = {
     income: document.querySelector('.container-income-list'),
@@ -49,27 +68,16 @@ function renderTransactionHistory(transactions) {
 //     }
 //   }
 // }
-function renderSelectIncome(categories) {
-  const elSelectIncome = document.querySelector('#income')
+function renderSelect(categories, type) {
+  // const elSelectIncome = document.querySelector('#income') // type
+  const elSelectIncome = document.querySelector('#' + type) // type
   elSelectIncome.innerHTML = ''
   const elIncomeOptionSelected = generateOptionSelected()
   elSelectIncome.appendChild(elIncomeOptionSelected)
   for (const category of categories) {
-    if (category.type === 'income') {
+    if (category.type === type) {
       const elIncomeOption = generateOption(category)
       elSelectIncome.appendChild(elIncomeOption)
-    }
-  }
-}
-function renderSelectExpense(categories) {
-  const elSelectExpense = document.querySelector('#expense')
-  elSelectExpense.innerHTML = ''
-  const elExpenseOptionSelected = generateOptionSelected()
-  elSelectExpense.appendChild(elExpenseOptionSelected)
-  for (const category of categories) {
-    if (category.type === 'expense') {
-      const elExpenseOption = generateOption(category)
-      elSelectExpense.appendChild(elExpenseOption)
     }
   }
 }

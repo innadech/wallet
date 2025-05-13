@@ -6,63 +6,49 @@ function onClickInputBadgeRemoveTransaction(e) {
 }
 
 function onclickInputBadgeRemoveCategory(e) {
-  const elId = e.target.parentElement.getAttribute('data-id')
-  console.log(elId)
-  handleRemoveCategory(elId)
+  const id = e.target.parentElement.getAttribute('data-id')
+  const type = e.target.parentElement.getAttribute('data-type') // !!!
+  handleRemoveCategory(id, type)
 }
 
 function onClickButtonAddOptionIncome() {
   const elInput = document.querySelector('#addOptionIncome')
-  const elCaption = elInput.value
-  const elType = 'income'
-  if (elInput.value === '') {
-    return
-  } else {
-    handleAddOptionToSelectIncome(elCaption, elType)
-  }
+  const caption = elInput.value
+  const type = 'income'
+  if (elInput.value === '') return
+  handleAddOptionToSelectIncome(caption, type)
 }
 function onClickButtonAddOptionExpense() {
   const elInput = document.querySelector('#addOptionExpense')
   const elCaption = elInput.value
   const elType = 'expense'
-  if (elInput.value === '') {
-    return
-  } else {
-    handleAddOptionToSelectExpense(elCaption, elType)
-  }
+  if (elInput.value === '') return
+  handleAddOptionToSelectExpense(elCaption, elType)
 }
 
-function onClickButtonAddExpense() {
+function onClickButtonAddTransactionExpense() {
   const elSelect = document.querySelector('#expense')
-  const selectedOption = elSelect.options[elSelect.selectedIndex]
-  console.log(selectedOption.value)
+  const elSelectedOption = elSelect.options[elSelect.selectedIndex]
   const selectName = elSelect.name
-  console.log(selectName)
   const elInput = document.querySelector('#expenseamount')
 
-  if (selectedOption.disabled) {
-    elSelect.style.border = '2px solid red'
-    return
-  } else {
-    elSelect.style.border = ''
-  }
-  if (elInput.value === '' || +elInput.value === 0) {
-    elInput.style.border = '2px solid red'
-    return
-  } else {
-    elInput.style.border = ''
-  }
-  handleSetExpense(selectedOption.value, elInput.value)
-  handleAddExpense(selectedOption.value, selectName)
+  handleSetExpense(elSelectedOption.value, elInput.value)
+  handleAddExpense(elSelectedOption.value, selectName)
   handleRenderSpanIncome()
+}
+
+function onChangeSelectIncome(e) {
+  const categoryCaption = e.target.value
+}
+
+function onInputInputIncome(e) {
+  const transactionAmount = e.target.value
 }
 
 function onClickButtonAddIncome() {
   const elSelect = document.querySelector('#income')
   const selectedOption = elSelect.options[elSelect.selectedIndex]
-  console.log(selectedOption.value)
   const selectName = elSelect.name
-  console.log(selectName)
   const elInput = document.querySelector('#incomeamount')
   if (selectedOption.disabled) {
     elSelect.style.border = '2px solid red'

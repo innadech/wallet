@@ -19,6 +19,7 @@ function generateLiCategory(category) {
   const elI = document.createElement('i')
   const elInput = document.createElement('input')
   elSpan.setAttribute('data-id', category.id)
+  elSpan.setAttribute('data-type', category.type) // !!!
   elSpan.classList.add('badge')
   elInput.onclick = onclickInputBadgeRemoveCategory
   elI.textContent = category.caption

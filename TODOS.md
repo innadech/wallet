@@ -10,3 +10,9 @@
 renderBoxIncome(incomeCategories,currentIncome) {
 
 }
+
+transactionHistory - один список
+сategoriesIncome
+categoriesExpense
+
+categories transactions
