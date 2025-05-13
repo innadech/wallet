@@ -8,6 +8,7 @@ function renderCategory(categories) {
   for (const category of categories) {
     const elLi = generateLiCategory(category)
     elems[category.type].appendChild(elLi)
+    // elems[category.type].innerHTML = ''
   }
 }
 
@@ -29,20 +30,44 @@ function renderTransactionHistory(transactions) {
   }
 }
 
-function renderSelect(categories) {
+// function renderSelect(categories) {
+//   const elSelectIncome = document.querySelector('#income')
+//   const elSelectExpense = document.querySelector('#expense')
+//   // elSelectIncome.innerHTML = ''
+//   // elSelectExpense.innerHTML = ''
+//   const elIncomeOptionSelected = generateOptionSelected()
+//   const elExpenseOptionSelected = generateOptionSelected()
+//   elSelectIncome.appendChild(elIncomeOptionSelected)
+//   elSelectExpense.appendChild(elExpenseOptionSelected)
+//   for (const category of categories) {
+//     if (category.type === 'income') {
+//       const elIncomeOption = generateOption(category)
+//       elSelectIncome.appendChild(elIncomeOption)
+//     } else {
+//       const elExpenseOption = generateOption(category)
+//       elSelectExpense.appendChild(elExpenseOption)
+//     }
+//   }
+// }
+function renderSelectIncome(categories) {
   const elSelectIncome = document.querySelector('#income')
-  const elSelectExpense = document.querySelector('#expense')
   elSelectIncome.innerHTML = ''
-  elSelectExpense.innerHTML = ''
   const elIncomeOptionSelected = generateOptionSelected()
-  const elExpenseOptionSelected = generateOptionSelected()
   elSelectIncome.appendChild(elIncomeOptionSelected)
-  elSelectExpense.appendChild(elExpenseOptionSelected)
   for (const category of categories) {
     if (category.type === 'income') {
       const elIncomeOption = generateOption(category)
       elSelectIncome.appendChild(elIncomeOption)
-    } else {
+    }
+  }
+}
+function renderSelectExpense(categories) {
+  const elSelectExpense = document.querySelector('#expense')
+  elSelectExpense.innerHTML = ''
+  const elExpenseOptionSelected = generateOptionSelected()
+  elSelectExpense.appendChild(elExpenseOptionSelected)
+  for (const category of categories) {
+    if (category.type === 'expense') {
       const elExpenseOption = generateOption(category)
       elSelectExpense.appendChild(elExpenseOption)
     }
@@ -66,3 +91,4 @@ function renderInputAddSumExpense() {
   const elInput = document.querySelector('#expenseamount')
   elInput.value = ''
 }
+function renderBoxIncome(incomeCategories, currentIncome) {}

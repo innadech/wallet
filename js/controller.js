@@ -27,7 +27,7 @@ function handleRemove(id) {
 
 function handleAddOptionToSelectIncome(caption, type) {
   addCategory(caption, type)
-  renderSelect(categories)
+  renderSelectIncome(categories)
   renderInputAddOptionCategoryIncome()
   renderCategory(categories)
   // saveCategory(category)
@@ -35,7 +35,7 @@ function handleAddOptionToSelectIncome(caption, type) {
 }
 function handleAddOptionToSelectExpense(caption, type) {
   addCategory(caption, type)
-  renderSelect(categories)
+  renderSelectExpense(categories)
   renderInputAddOptionCategoryExpense()
   renderCategory(categories)
   // saveCategory(category)
@@ -45,7 +45,8 @@ function handleAddOptionToSelectExpense(caption, type) {
 function handleRemoveCategory(id) {
   removeCategoryById(+id)
   renderCategory(categories)
-  renderSelect(categories)
+  if (removed.type === 'income') renderSelectIncome(categories)
+  // if (category.type === 'expense') renderSelectExpense(categories)
 }
 
 // function handleLoadPage() {

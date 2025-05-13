@@ -1,5 +1,8 @@
 let transactionHistory = []
 let categories = []
+// let incomeCategories = []
+// let expenseCategories = []
+
 let nextId = 1
 
 const income = {
@@ -81,7 +84,36 @@ function createCategory(caption, type) {
     type: type,
   }
 }
+
+// function addCategoryIncome(caption, type) {
+//   const existingCategory = incomeCategories.find(
+//     category => category.caption === caption
+//   )
+//   if (existingCategory) {
+//     return
+//   }
+//   const category = createCategory(caption, type)
+//   incomeCategories.push(category)
+// }
+
+// function addCategoryExpense(caption, type) {
+//   const existingCategory = expenseCategories.find(
+//     category => category.caption === caption
+//   )
+//   if (existingCategory) {
+//     return
+//   }
+//   const category = createCategory(caption, type)
+//   expenseCategories.push(category)
+// }
+
 function addCategory(caption, type) {
+  const existingCategory = categories.find(
+    category => category.caption === caption
+  )
+  if (existingCategory) {
+    return
+  }
   const category = createCategory(caption, type)
   categories.push(category)
 }
