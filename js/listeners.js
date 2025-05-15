@@ -1,14 +1,18 @@
 function onClickInputBadgeRemoveTransaction(e) {
   const elId = e.target.parentElement.parentElement.getAttribute('data-id')
   console.log(elId)
-  handleRemove(elId)
+  handleRemoveTransaction(elId)
   handleRenderSpanIncome()
 }
 
 function onclickInputBadgeRemoveCategory(e) {
   const id = e.target.parentElement.getAttribute('data-id')
-  const type = e.target.parentElement.getAttribute('data-type') // !!!
-  handleRemoveCategory(id, type)
+  const type = e.target.parentElement.getAttribute('data-type')
+  if (type === 'income') {
+    handleRemoveIncomeCategories(id, type)
+  } else {
+    handleRemoveExpenseCategories(id, type)
+  }
 }
 
 function onClickButtonAddOptionIncome() {
@@ -26,26 +30,26 @@ function onClickButtonAddOptionExpense() {
   handleAddOptionToSelectExpense(elCaption, elType)
 }
 
-function onClickButtonAddTransactionExpense() {
-  const elSelect = document.querySelector('#expense')
-  const elSelectedOption = elSelect.options[elSelect.selectedIndex]
-  const selectName = elSelect.name
-  const elInput = document.querySelector('#expenseamount')
-
-  handleSetExpense(elSelectedOption.value, elInput.value)
-  handleAddExpense(elSelectedOption.value, selectName)
-  handleRenderSpanIncome()
-}
-
 function onChangeSelectIncome(e) {
   const categoryCaption = e.target.value
+  handleSetCategoryIncome(categoryCaption)
 }
 
 function onInputInputIncome(e) {
   const transactionAmount = e.target.value
+  handleSetAmountIncome(transactionAmount)
+}
+function onChangeSelectExpense(e) {
+  const categoryCaption = e.target.value
+  handleSetCategoryExpense(categoryCaption)
 }
 
-function onClickButtonAddIncome() {
+function onInputInputExpense(e) {
+  const transactionAmount = e.target.value
+  handleSetAmountExpense(transactionAmount)
+}
+
+function onClickButtonAddTransactionIncome() {
   const elSelect = document.querySelector('#income')
   const selectedOption = elSelect.options[elSelect.selectedIndex]
   const selectName = elSelect.name
@@ -62,8 +66,20 @@ function onClickButtonAddIncome() {
   } else {
     elInput.style.border = ''
   }
-  handleSetIncome(selectedOption.value, elInput.value)
-  handleAddIncome(selectedOption.value, selectName)
+  handleAddTransactionIncome(selectedOption.value, selectName)
+  handleRenderSpanIncome()
+}
+function onClickButtonAddTransactionExpense() {
+  const elSelect = document.querySelector('#expense')
+  const elSelectedOption = elSelect.options[elSelect.selectedIndex]
+  const selectName = elSelect.name
+  // const elInput = document.querySelector('#expenseamount')
+
+  // const validSelect = !elSelectedOption.disabled
+  // const validInput = !!+elInput.value
+  renderSelectRedExpense()
+  renderInputRedExpense()
+  handleAddTransactionExpense(elSelectedOption.value, selectName)
   handleRenderSpanIncome()
 }
 
@@ -114,4 +130,9 @@ function onClickButtonAddIncome() {
 //   // console.log(elIncome)
 //   handleRemoveIncome(elIncome)
 //   handleRenderSpanIncome()
+// }
+// function onclickInputBadgeRemoveCategory(e) {
+//   const id = e.target.parentElement.getAttribute('data-id')
+//   const type = e.target.parentElement.getAttribute('data-type') // !!!
+//   handleRemoveCategory(id, type)
 // }

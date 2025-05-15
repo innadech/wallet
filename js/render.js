@@ -27,7 +27,6 @@ function renderCategory(categories) {
   for (const category of categories) {
     const elLi = generateLiCategory(category)
     elems[category.type].appendChild(elLi)
-    // elems[category.type].innerHTML = ''
   }
 }
 

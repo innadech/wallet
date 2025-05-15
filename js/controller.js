@@ -1,23 +1,22 @@
-function handleSetIncome(category, amount) {
+function handleSetCategoryIncome(category) {
   setCategoryIncome(category)
+}
+function handleSetAmountIncome(amount) {
   setAmountIncome(+amount)
 }
-function handleSetCategoryExpense(category, amount) {
+function handleSetCategoryExpense(category) {
   setCategoryExpense(category)
 }
-function handleSetAmountExpense(category, amount) {
+function handleSetAmountExpense(amount) {
   setAmountExpense(+amount)
 }
-// function handleSetExpense(category, amount) {
-//   setCategoryExpense(category)
-//   setAmountExpense(+amount)
-// }
-function handleAddIncome() {
+
+function handleAddTransactionIncome() {
   addTransactionnFromIncome(income)
   renderTransactionHistory(transactionHistory)
   renderInputAddSumIncome()
 }
-function handleAddExpense() {
+function handleAddTransactionExpense() {
   addTransactionnFromExpense(expense)
   renderTransactionHistory(transactionHistory)
   renderInputAddSumExpense()
@@ -26,33 +25,43 @@ function handleRenderSpanIncome() {
   const elBalance = getBalance()
   renderSpanIncome(elBalance)
 }
-function handleRemove(id) {
+function handleRemoveTransaction(id) {
   removeTransactionById(+id)
   renderTransactionHistory(transactionHistory)
 }
 
 function handleAddOptionToSelectIncome(caption, type) {
-  addCategory(caption, type)
-  renderSelect(categories, type)
+  addCategoryIncome(caption, type)
+  renderSelect(incomeCategories, type)
   renderInputAddOptionCategoryIncome()
-  renderCategory(categories)
+  renderCategory(incomeCategories)
   // saveCategory(category)
   // saveCategories()
 }
 function handleAddOptionToSelectExpense(caption, type) {
-  addCategory(caption, type)
-  renderSelect(categories)
+  addCategoryExpense(caption, type)
+  // renderSelect(expenseCategories, type)
   renderInputAddOptionCategoryExpense()
-  renderCategory(categories)
+  renderCategory(expenseCategories)
   // saveCategory(category)
   // saveCategories()
 }
 
-function handleRemoveCategory(id, type) {
-  removeCategoryById(+id)
-  renderCategory(categories)
-  renderSelect(categories, type)
+function handleRemoveIncomeCategories(id, type) {
+  removeCategoryByIdIncome(+id)
+  renderCategory(incomeCategories)
+  renderSelect(incomeCategories, type)
 }
+function handleRemoveExpenseCategories(id, type) {
+  removeCategoryByIdExpense(+id)
+  renderCategory(expenseCategories)
+  renderSelect(expenseCategories, type)
+}
+// function handleRemoveCategory(id, type) {
+//   removeCategoryById(+id)
+//   renderCategory(categories)
+//   renderSelect(categories, type)
+// }
 
 // function handleLoadPage() {
 //   const category = restoreCategory()

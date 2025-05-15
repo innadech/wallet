@@ -1,7 +1,7 @@
 let transactionHistory = []
 let categories = []
-// let incomeCategories = []
-// let expenseCategories = []
+let incomeCategories = []
+let expenseCategories = []
 
 let nextId = 1
 
@@ -13,17 +13,6 @@ const expense = {
   amount: 0,
   category: '',
 }
-// const transaction = {
-//   id: 42,
-//   type: 'income',
-//   amount: 0,
-//   category: '',
-// }
-// const category = {
-//   id: 33,
-//   caption: 'зарплата',
-//   type: 'income',
-// }
 
 function creteTransactionFromIncome(income) {
   return {
@@ -85,37 +74,26 @@ function createCategory(caption, type) {
   }
 }
 
-// function addCategoryIncome(caption, type) {
-//   const existingCategory = incomeCategories.find(
-//     category => category.caption === caption
-//   )
-//   if (existingCategory) {
-//     return
-//   }
-//   const category = createCategory(caption, type)
-//   incomeCategories.push(category)
-// }
-
-// function addCategoryExpense(caption, type) {
-//   const existingCategory = expenseCategories.find(
-//     category => category.caption === caption
-//   )
-//   if (existingCategory) {
-//     return
-//   }
-//   const category = createCategory(caption, type)
-//   expenseCategories.push(category)
-// }
-
-function addCategory(caption, type) {
-  const existingCategory = categories.find(
+function addCategoryIncome(caption, type) {
+  const existingCategory = incomeCategories.find(
     category => category.caption === caption
   )
   if (existingCategory) {
     return
   }
   const category = createCategory(caption, type)
-  categories.push(category)
+  incomeCategories.push(category)
+}
+
+function addCategoryExpense(caption, type) {
+  const existingCategory = expenseCategories.find(
+    category => category.caption === caption
+  )
+  if (existingCategory) {
+    return
+  }
+  const category = createCategory(caption, type)
+  expenseCategories.push(category)
 }
 
 function getBalance() {
@@ -128,10 +106,33 @@ function removeTransactionById(id) {
     transaction => transaction.id !== id
   )
 }
-function removeCategoryById(id) {
-  categories = categories.filter(category => category.id !== id)
+function removeCategoryByIdIncome(id) {
+  incomeCategories = incomeCategories.filter(category => category.id !== id)
 }
+function removeCategoryByIdExpense(id) {
+  expenseCategories = expenseCategories.filter(category => category.id !== id)
+}
+// incomeCategories
+// addCategoryIncome('зарплата', 'income')
+// incomeCategories
+// // removeCategoryById(incomeCategories, 1)
+// incomeCategories = removeCategoryById(incomeCategories, 1)
+// incomeCategories
 
+// function removeCategoryById(id) {
+//   categories = categories.filter(category => category.id !== id)
+// }
+
+// function addCategory(caption, type) {
+//   const existingCategory = categories.find(
+//     category => category.caption === caption
+//   )
+//   if (existingCategory) {
+//     return
+//   }
+//   const category = createCategory(caption, type)
+//   categories.push(category)
+// }
 // let result = getBalance()
 // result
 // transactionHistory
@@ -360,6 +361,17 @@ function removeCategoryById(id) {
 
 // function returnExpenseSumToBalance(returnedSum) {
 //   return balance + returnedSum
+// }
+// const transaction = {
+//   id: 42,
+//   type: 'income',
+//   amount: 0,
+//   category: '',
+// }
+// const category = {
+//   id: 33,
+//   caption: 'зарплата',
+//   type: 'income',
 // }
 
 // income
