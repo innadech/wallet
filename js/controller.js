@@ -40,7 +40,7 @@ function handleAddOptionToSelectIncome(caption, type) {
 }
 function handleAddOptionToSelectExpense(caption, type) {
   addCategoryExpense(caption, type)
-  // renderSelect(expenseCategories, type)
+  renderSelect(expenseCategories, type)
   renderInputAddOptionCategoryExpense()
   renderCategory(expenseCategories)
   // saveCategory(category)
