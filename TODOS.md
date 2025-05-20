@@ -7,7 +7,7 @@
 твои income и expence. не синхронизированы с отображением
 я бы их вообще переименовал в currentIncome и currentExpence
 
-renderBoxIncome(incomeCategories,currentIncome) {
+renderContainerIncomeAppender(incomeCategories, currentIncome) {
 
 }
 

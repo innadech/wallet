@@ -22,8 +22,8 @@ function handleAddTransactionExpense() {
   renderInputAddSumExpense()
 }
 function handleRenderSpanIncome() {
-  const elBalance = getBalance()
-  renderSpanIncome(elBalance)
+  const balance = getBalance()
+  renderSpanIncome(balance) // renderBalance
 }
 function handleRemoveTransaction(id) {
   removeTransactionById(+id)
@@ -34,7 +34,7 @@ function handleAddOptionToSelectIncome(caption, type) {
   addCategoryIncome(caption, type)
   renderSelect(incomeCategories, type)
   renderInputAddOptionCategoryIncome()
-  renderCategory(incomeCategories)
+  renderCategoriesList(incomeCategories)
   // saveCategory(category)
   // saveCategories()
 }
@@ -42,24 +42,24 @@ function handleAddOptionToSelectExpense(caption, type) {
   addCategoryExpense(caption, type)
   renderSelect(expenseCategories, type)
   renderInputAddOptionCategoryExpense()
-  renderCategory(expenseCategories)
+  renderCategoriesList(expenseCategories)
   // saveCategory(category)
   // saveCategories()
 }
 
 function handleRemoveIncomeCategories(id, type) {
   removeCategoryByIdIncome(+id)
-  renderCategory(incomeCategories)
+  renderCategoriesList(incomeCategories)
   renderSelect(incomeCategories, type)
 }
 function handleRemoveExpenseCategories(id, type) {
   removeCategoryByIdExpense(+id)
-  renderCategory(expenseCategories)
+  renderCategoriesList(expenseCategories)
   renderSelect(expenseCategories, type)
 }
 // function handleRemoveCategory(id, type) {
 //   removeCategoryById(+id)
-//   renderCategory(categories)
+//   renderCategoriesList(categories)
 //   renderSelect(categories, type)
 // }
 
@@ -70,7 +70,7 @@ function handleRemoveExpenseCategories(id, type) {
 //   const elType = category.type
 //   renderSelect(categories)
 //   addCategory(elCaption, elType)
-//   renderCategory(categories)
+//   renderCategoriesList(categories)
 // }
 
 // function handleSetAmountExpense(amount) {

@@ -18,16 +18,16 @@ function onclickInputBadgeRemoveCategory(e) {
 function onClickButtonAddOptionIncome() {
   const elInput = document.querySelector('#addOptionIncome')
   const caption = elInput.value
-  const type = 'income'
   if (elInput.value === '') return
-  handleAddOptionToSelectIncome(caption, type)
+  handleAddOptionToSelectIncome(caption, 'income')
+  elInput.value = ''
 }
 function onClickButtonAddOptionExpense() {
   const elInput = document.querySelector('#addOptionExpense')
-  const elCaption = elInput.value
-  const elType = 'expense'
+  const caption = elInput.value
   if (elInput.value === '') return
-  handleAddOptionToSelectExpense(elCaption, elType)
+  handleAddOptionToSelectExpense(caption, 'expense')
+  elInput.value = ''
 }
 
 function onChangeSelectIncome(e) {
@@ -68,6 +68,7 @@ function onClickButtonAddTransactionIncome() {
   }
   handleAddTransactionIncome(selectedOption.value, selectName)
   handleRenderSpanIncome()
+  elInput.value = ''
 }
 function onClickButtonAddTransactionExpense() {
   const elSelect = document.querySelector('#expense')
@@ -81,4 +82,5 @@ function onClickButtonAddTransactionExpense() {
   renderInputRedExpense()
   handleAddTransactionExpense(elSelectedOption.value, selectName)
   handleRenderSpanIncome()
+  elInput.value = ''
 }

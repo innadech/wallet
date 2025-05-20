@@ -1,14 +1,16 @@
 let transactionHistory = []
-let categories = []
-let incomeCategories = []
-let expenseCategories = []
+// let categories = []
 
 let nextId = 1
 
+let incomeCategories = []
 const income = {
+  // currentIncome
   amount: 0,
   category: '',
 }
+
+let expenseCategories = []
 const expense = {
   amount: 0,
   category: '',

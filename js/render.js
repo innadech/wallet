@@ -17,7 +17,7 @@ function renderInputRedExpense() {
   elInput.style.border = ''
 }
 
-function renderCategory(categories) {
+function renderCategoriesList(categories) {
   const elems = {
     income: document.querySelector('.container-income-list'),
     expense: document.querySelector('.container-outcome-list'),
@@ -29,7 +29,7 @@ function renderCategory(categories) {
     elems[category.type].appendChild(elLi)
   }
 }
-
+/// ???? renderBalance
 function renderSpanIncome(number) {
   const elSpan = document.querySelector('.balance')
   elSpan.innerHTML = 'Balance' + ':' + '$' + number
@@ -48,26 +48,7 @@ function renderTransactionHistory(transactions) {
   }
 }
 
-// function renderSelect(categories) {
-//   const elSelectIncome = document.querySelector('#income')
-//   const elSelectExpense = document.querySelector('#expense')
-//   // elSelectIncome.innerHTML = ''
-//   // elSelectExpense.innerHTML = ''
-//   const elIncomeOptionSelected = generateOptionSelected()
-//   const elExpenseOptionSelected = generateOptionSelected()
-//   elSelectIncome.appendChild(elIncomeOptionSelected)
-//   elSelectExpense.appendChild(elExpenseOptionSelected)
-//   for (const category of categories) {
-//     if (category.type === 'income') {
-//       const elIncomeOption = generateOption(category)
-//       elSelectIncome.appendChild(elIncomeOption)
-//     } else {
-//       const elExpenseOption = generateOption(category)
-//       elSelectExpense.appendChild(elExpenseOption)
-//     }
-//   }
-// }
-function renderSelect(categories, type) {
+function renderSelect(categories, type, currentCategory) {
   // const elSelectIncome = document.querySelector('#income') // type
   const elSelectIncome = document.querySelector('#' + type) // type
   elSelectIncome.innerHTML = ''
@@ -79,23 +60,12 @@ function renderSelect(categories, type) {
       elSelectIncome.appendChild(elIncomeOption)
     }
   }
+  console.log(currentCategory)
+  elSelectIncome.value = currentCategory ?? 'www'
 }
 
-function renderInputAddOptionCategoryIncome() {
-  const elInput = document.querySelector('#addOptionIncome')
-  elInput.value = ''
-}
-function renderInputAddOptionCategoryExpense() {
-  const elInput = document.querySelector('#addOptionExpense')
-  elInput.value = ''
-}
-
-function renderInputAddSumIncome() {
+function renderContainerIncomeAppender(incomeCategories, currentIncome) {
   const elInput = document.querySelector('#incomeamount')
-  elInput.value = ''
+  elInput.value = currentIncome.value
+  renderSelect(incomeCategories, type, currentIncome.category)
 }
-function renderInputAddSumExpense() {
-  const elInput = document.querySelector('#expenseamount')
-  elInput.value = ''
-}
-function renderBoxIncome(incomeCategories, currentIncome) {}
