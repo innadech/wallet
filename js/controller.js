@@ -10,20 +10,38 @@ function handleSetCategoryExpense(category) {
 function handleSetAmountExpense(amount) {
   setAmountExpense(+amount)
 }
+function handleSetCurrentCategoryCaption(caption) {
+  setCurrentCategoryCaption(caption)
+}
+function handleSetCurrentCategoryType(type) {
+  setCurrentCategoryType(type)
+}
+
+function handleUpdateBoxIncome() {
+  handleSetCategoryIncome('')
+  handleSetAmountIncome(0)
+  handleSetCurrentCategoryCaption('')
+  handleSetCurrentCategoryType(income)
+  renderContainerIncomeAppender(
+    incomeCategories,
+    currentIncome,
+    currentCategoty
+  )
+}
 
 function handleAddTransactionIncome() {
-  addTransactionnFromIncome(income)
+  addTransactionnFromIncome(currentIncome)
   renderTransactionHistory(transactionHistory)
   renderInputAddSumIncome()
 }
 function handleAddTransactionExpense() {
-  addTransactionnFromExpense(expense)
+  addTransactionnFromExpense(currentExpense)
   renderTransactionHistory(transactionHistory)
   renderInputAddSumExpense()
 }
 function handleRenderSpanIncome() {
   const balance = getBalance()
-  renderSpanIncome(balance) // renderBalance
+  renderBalance(balance)
 }
 function handleRemoveTransaction(id) {
   removeTransactionById(+id)
@@ -57,11 +75,6 @@ function handleRemoveExpenseCategories(id, type) {
   renderCategoriesList(expenseCategories)
   renderSelect(expenseCategories, type)
 }
-// function handleRemoveCategory(id, type) {
-//   removeCategoryById(+id)
-//   renderCategoriesList(categories)
-//   renderSelect(categories, type)
-// }
 
 // function handleLoadPage() {
 //   const category = restoreCategory()
@@ -71,62 +84,4 @@ function handleRemoveExpenseCategories(id, type) {
 //   renderSelect(categories)
 //   addCategory(elCaption, elType)
 //   renderCategoriesList(categories)
-// }
-
-// function handleSetAmountExpense(amount) {
-//   setAmountExpense(+amount)
-// }
-// function handleSetAmountIncome(amount) {
-//   setAmountIncome(+amount)
-// }
-// function handleSetCategoryExpense(category) {
-//   setCategoryExpense(category)
-// }
-// function handleSetCategoryIncome(category) {
-//   setCategoryIncome(category)
-// }
-// function handleAddExpense() {
-//   getNextIdExpense()
-//   markAsIsExpense()
-//   addExpenseToHistory()
-//   addExpense()
-//   renderTransactionHistory(getSumByActive())
-//   renderCategoryExpense(expenses)
-//   const elBalance = calculateBalance(getTotalExpenses())
-//   renderSpanIncome(elBalance)
-// }
-// function handleAddIncome() {
-//   markAsIsIncome()
-//   addIncomeToHistory()
-//   getNextIdIncome()
-//   addIncome()
-//   renderTransactionHistory(getSumByActive())
-//   setBalance()
-//   renderCategoryIncome(incomes)
-// }
-
-// function handleRenderSpanIncome() {
-//   const sum = getTotalIncomes()
-//   renderSpanIncome(sum)
-// }
-// function handleRemoveExpense(categoryName) {
-//   const returnedSum = removeCategoryExpense(categoryName)
-//   console.log(returnedSum)
-//   const sum = getTotalExpenses()
-//   console.log(sum)
-//   console.log(balance)
-//   // renderCategoryExpense(sum)
-//   // console.log(getTotalIncomes())
-//   const returnExpenseSum = returnExpenseSumToBalance(returnedSum)
-//   renderSpanIncome(returnExpenseSum)
-// }
-// function handleRemoveIncome(categoryName) {
-//   removeCategoryIncome(categoryName)
-//   renderContainerIncome(incomes)
-// }
-
-// function handleRenderSpanExpense() {
-//   const sum = getTotalExpenses()
-//   console.log(+sum)
-//   renderSpanExpense(sum)
 // }

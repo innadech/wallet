@@ -36,7 +36,6 @@ function generateOptionSelected() {
   elOption.setAttribute('disabled', '')
   elOption.setAttribute('selected', '')
   elOption.setAttribute('value', '')
-
   return elOption
 }
 

@@ -20,14 +20,14 @@ function onClickButtonAddOptionIncome() {
   const caption = elInput.value
   if (elInput.value === '') return
   handleAddOptionToSelectIncome(caption, 'income')
-  elInput.value = ''
+  // elInput.value = ''
 }
 function onClickButtonAddOptionExpense() {
   const elInput = document.querySelector('#addOptionExpense')
   const caption = elInput.value
   if (elInput.value === '') return
   handleAddOptionToSelectExpense(caption, 'expense')
-  elInput.value = ''
+  // elInput.value = ''
 }
 
 function onChangeSelectIncome(e) {

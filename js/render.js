@@ -30,7 +30,7 @@ function renderCategoriesList(categories) {
   }
 }
 /// ???? renderBalance
-function renderSpanIncome(number) {
+function renderBalance(number) {
   const elSpan = document.querySelector('.balance')
   elSpan.innerHTML = 'Balance' + ':' + '$' + number
 }
@@ -50,22 +50,38 @@ function renderTransactionHistory(transactions) {
 
 function renderSelect(categories, type, currentCategory) {
   // const elSelectIncome = document.querySelector('#income') // type
-  const elSelectIncome = document.querySelector('#' + type) // type
-  elSelectIncome.innerHTML = ''
-  const elIncomeOptionSelected = generateOptionSelected()
-  elSelectIncome.appendChild(elIncomeOptionSelected)
+  const elSelect = document.querySelector('#' + type) // type
+  elSelect.innerHTML = ''
+  const elOptionSelected = generateOptionSelected()
+  elSelect.appendChild(elOptionSelected)
   for (const category of categories) {
     if (category.type === type) {
-      const elIncomeOption = generateOption(category)
-      elSelectIncome.appendChild(elIncomeOption)
+      const elOption = generateOption(category)
+      elSelect.appendChild(elOption)
     }
   }
   console.log(currentCategory)
-  elSelectIncome.value = currentCategory ?? 'www'
+  elSelectIncome.value = currentCategory.caption
 }
-
 function renderContainerIncomeAppender(incomeCategories, currentIncome) {
   const elInput = document.querySelector('#incomeamount')
-  elInput.value = currentIncome.value
-  renderSelect(incomeCategories, type, currentIncome.category)
+  elInput.value = currentIncome.amount
+  renderSelect(incomeCategories, type, currentCategory)
+}
+
+function renderInputAddOptionCategoryIncome() {
+  const elInput = document.querySelector('#addOptionIncome')
+  elInput.value = ''
+}
+function renderInputAddOptionCategoryExpense() {
+  const elInput = document.querySelector('#addOptionExpense')
+  elInput.value = ''
+}
+function renderInputAddSumIncome() {
+  const elInput = document.querySelector('#incomeamount')
+  elInput.value = ''
+}
+function renderInputAddSumOutcome() {
+  const elInput = document.querySelector('#expenseamount')
+  elInput.value = ''
 }
