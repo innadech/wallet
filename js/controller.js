@@ -10,29 +10,25 @@ function handleSetCategoryExpense(category) {
 function handleSetAmountExpense(amount) {
   setAmountExpense(+amount)
 }
-function handleSetCurrentCategoryCaption(caption) {
-  setCurrentCategoryCaption(caption)
-}
-function handleSetCurrentCategoryType(type) {
-  setCurrentCategoryType(type)
-}
+// function handleSetCurrentCategoryCaption(caption) {
+//   setCurrentCategoryCaption(caption)
+// }
+// function handleSetCurrentCategoryType(type) {
+//   setCurrentCategoryType(type)
+// }
 
 function handleUpdateBoxIncome() {
   handleSetCategoryIncome('')
   handleSetAmountIncome(0)
-  handleSetCurrentCategoryCaption('')
-  handleSetCurrentCategoryType(income)
-  renderContainerIncomeAppender(
-    incomeCategories,
-    currentIncome,
-    currentCategoty
-  )
+  // handleSetCurrentCategoryCaption('')
+  // handleSetCurrentCategoryType(income)
+  renderContainerIncomeAppender(incomeCategories, currentIncome)
 }
 
 function handleAddTransactionIncome() {
   addTransactionnFromIncome(currentIncome)
   renderTransactionHistory(transactionHistory)
-  renderInputAddSumIncome()
+  renderInputAddSumIncome(0)
 }
 function handleAddTransactionExpense() {
   addTransactionnFromExpense(currentExpense)
@@ -48,18 +44,18 @@ function handleRemoveTransaction(id) {
   renderTransactionHistory(transactionHistory)
 }
 
-function handleAddOptionToSelectIncome(caption, type) {
-  addCategoryIncome(caption, type)
-  renderSelect(incomeCategories, type)
-  renderInputAddOptionCategoryIncome()
+function handleAddCategoryIncome(caption) {
+  addCategoryIncome(caption)
+  renderSelect(incomeCategories, 'income')
+  renderInputAddCategoryIncome()
   renderCategoriesList(incomeCategories)
   // saveCategory(category)
   // saveCategories()
 }
-function handleAddOptionToSelectExpense(caption, type) {
-  addCategoryExpense(caption, type)
-  renderSelect(expenseCategories, type)
-  renderInputAddOptionCategoryExpense()
+function handleAddCategoryExpense(caption) {
+  addCategoryExpense(caption)
+  renderSelect(expenseCategories, 'expense')
+  renderInputAddCategoryExpense()
   renderCategoriesList(expenseCategories)
   // saveCategory(category)
   // saveCategories()

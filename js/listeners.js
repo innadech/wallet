@@ -15,19 +15,19 @@ function onclickInputBadgeRemoveCategory(e) {
   }
 }
 
-function onClickButtonAddOptionIncome() {
+function onClickButtonAddCategoryIncome() {
   const elInput = document.querySelector('#addOptionIncome')
   const caption = elInput.value
   if (elInput.value === '') return
-  handleAddOptionToSelectIncome(caption, 'income')
-  // elInput.value = ''
+  handleAddCategoryIncome(caption)
+  elInput.value = ''
 }
-function onClickButtonAddOptionExpense() {
+function onClickButtonAddCategoryExpense() {
   const elInput = document.querySelector('#addOptionExpense')
   const caption = elInput.value
   if (elInput.value === '') return
-  handleAddOptionToSelectExpense(caption, 'expense')
-  // elInput.value = ''
+  handleAddCategoryExpense(caption)
+  elInput.value = ''
 }
 
 function onChangeSelectIncome(e) {

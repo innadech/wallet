@@ -22,5 +22,5 @@ elInputBoxExpense.oninput = onInputInputExpense
 
 elExpenseButtonAdd.onclick = onClickButtonAddTransactionExpense
 elIncomeButtonAdd.onclick = onClickButtonAddTransactionIncome
-elButtonAddOptionIncome.onclick = onClickButtonAddOptionIncome
-elButtonAddOptionExpense.onclick = onClickButtonAddOptionExpense
+elButtonAddOptionIncome.onclick = onClickButtonAddCategoryIncome
+elButtonAddOptionExpense.onclick = onClickButtonAddCategoryExpense

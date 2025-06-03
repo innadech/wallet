@@ -12,16 +12,16 @@ const currentExpense = {
   category: '',
 }
 
-const currentCategory = {
-  caption: '',
-  type: '',
-}
-function setCurrentCategoryCaption(caption) {
-  currentCategory.caption = caption
-}
-function setCurrentCategoryType(type) {
-  currentCategory.type = type
-}
+// const currentCategory = {
+//   caption: '',
+//   type: '',
+// }
+// function setCurrentCategoryCaption(caption) {
+//   currentCategory.caption = caption
+// }
+// function setCurrentCategoryType(type) {
+//   currentCategory.type = type
+// }
 
 function creteTransactionFromIncome(currentIncome) {
   return {
@@ -83,25 +83,17 @@ function createCategory(caption, type) {
   }
 }
 
-function addCategoryIncome(caption, type) {
-  const existingCategory = incomeCategories.find(
-    category => category.caption === caption
-  )
-  if (existingCategory) {
-    return
-  }
-  const category = createCategory(caption, type)
+function addCategoryIncome(caption) {
+  const existingCategory = incomeCategories.find(c => c.caption === caption)
+  if (existingCategory) return
+  const category = createCategory(caption, 'income')
   incomeCategories.push(category)
 }
 
-function addCategoryExpense(caption, type) {
-  const existingCategory = expenseCategories.find(
-    category => category.caption === caption
-  )
-  if (existingCategory) {
-    return
-  }
-  const category = createCategory(caption, type)
+function addCategoryExpense(caption) {
+  const existingCategory = expenseCategories.find(c => c.caption === caption)
+  if (existingCategory) return
+  const category = createCategory(caption, 'expense')
   expenseCategories.push(category)
 }
 

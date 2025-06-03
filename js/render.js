@@ -64,20 +64,19 @@ function renderSelect(categories, type, currentCategory) {
   elSelectIncome.value = currentCategory.caption
 }
 function renderContainerIncomeAppender(incomeCategories, currentIncome) {
-  const elInput = document.querySelector('#incomeamount')
-  elInput.value = currentIncome.amount
-  renderSelect(incomeCategories, type, currentCategory)
+  renderSelect(incomeCategories, 'income', currentIncome.category)
+  renderInputAddSumIncome(currentIncome.amount)
 }
 
-function renderInputAddOptionCategoryIncome() {
-  const elInput = document.querySelector('#addOptionIncome')
-  elInput.value = ''
-}
-function renderInputAddOptionCategoryExpense() {
-  const elInput = document.querySelector('#addOptionExpense')
-  elInput.value = ''
-}
-function renderInputAddSumIncome() {
+// function renderInputAddCategoryIncome() {
+//   const elInput = document.querySelector('#addOptionIncome')
+//   elInput.value = ''
+// }
+// function renderInputAddCategoryExpense() {
+//   const elInput = document.querySelector('#addOptionExpense')
+//   elInput.value = ''
+// }
+function renderInputAddSumIncome(amount) {
   const elInput = document.querySelector('#incomeamount')
   elInput.value = ''
 }
